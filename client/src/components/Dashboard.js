@@ -33,7 +33,7 @@ const Dashboard = () => {
       setChartData(chartResponse.data.lineData);
       setPieData(chartResponse.data.pieData);
     } catch (error) {
-      console.error('Error fetching dashboard data:', error);
+      console.error('Erreur lors du chargement des données du tableau de bord:', error);
     } finally {
       setLoading(false);
     }
@@ -42,37 +42,38 @@ const Dashboard = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   if (loading) {
-    return <div className="loading">Loading dashboard...</div>;
+    return <div className="loading">Chargement du tableau de bord...</div>;
   }
 
   return (
     <div className="container">
-      <h1 className="page-title">Dashboard</h1>
+
+      <h1 className="page-title">Tableau de Bord</h1>
       
       {/* Stats Cards */}
       <div className="stats-grid">
         <div className="stat-card">
-          <h3>Total Users</h3>
+          <h3>Total Utilisateurs</h3>
           <div className="number">{stats.totalUsers}</div>
         </div>
         <div className="stat-card">
-          <h3>Active Users</h3>
+          <h3>Utilisateurs Actifs</h3>
           <div className="number">{stats.activeUsers}</div>
         </div>
         <div className="stat-card">
-          <h3>Total Sales</h3>
+          <h3>Total Ventes</h3>
           <div className="number">{stats.totalSales}</div>
         </div>
         <div className="stat-card">
-          <h3>Revenue</h3>
-          <div className="number">${stats.revenue.toLocaleString()}</div>
+          <h3>Chiffre d'Affaires</h3>
+          <div className="number">{stats.revenue.toLocaleString()} €</div>
         </div>
       </div>
 
       {/* Charts */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
         <div className="card">
-          <h3>User Growth</h3>
+          <h3>Croissance des Utilisateurs</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -80,14 +81,14 @@ const Dashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="users" stroke="#8884d8" />
-              <Line type="monotone" dataKey="sales" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="users" stroke="#0066cc" name="Utilisateurs" strokeWidth={2} />
+              <Line type="monotone" dataKey="sales" stroke="#28a745" name="Ventes" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
         <div className="card">
-          <h3>Revenue by Category</h3>
+          <h3>Chiffre d'Affaires par Catégorie</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -111,7 +112,7 @@ const Dashboard = () => {
       </div>
 
       <div className="card">
-        <h3>Monthly Revenue</h3>
+        <h3>Chiffre d'Affaires Mensuel</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -119,7 +120,7 @@ const Dashboard = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="revenue" fill="#8884d8" />
+            <Bar dataKey="revenue" fill="#0066cc" name="Chiffre d'Affaires" radius={[2, 2, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
