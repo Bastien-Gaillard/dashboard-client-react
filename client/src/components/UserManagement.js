@@ -38,16 +38,16 @@ const UserManagement = () => {
   };
 
   const handleDeleteUser = async (userId) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
       try {
         const token = localStorage.getItem('token');
         await axios.delete(`/api/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setUsers(users.filter(user => user.id !== userId));
+        setUsers(users.filter(user => user._id !== userId));
       } catch (error) {
         console.error('Error deleting user:', error);
-        alert('Error deleting user');
+        alert('Erreur lors de la suppression de l\'utilisateur');
       }
     }
   };
@@ -61,7 +61,7 @@ const UserManagement = () => {
     if (selectedUser) {
       // Update existing user
       setUsers(users.map(user => 
-        user.id === savedUser.id ? savedUser : user
+        user._id === savedUser._id ? savedUser : user
       ));
     } else {
       // Add new user
@@ -72,22 +72,23 @@ const UserManagement = () => {
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
-    return <div className="loading">Loading users...</div>;
+    return <div className="loading">Chargement des utilisateurs...</div>;
   }
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1 className="page-title">User Management</h1>
+      <div className="page-header">
+        <h1 className="page-title">Gestion des Utilisateurs</h1>
         <button 
           onClick={handleCreateUser}
           className="btn btn-primary"
         >
-          Add New User
+          Ajouter un Utilisateur
         </button>
       </div>
 
@@ -95,10 +96,10 @@ const UserManagement = () => {
         <div style={{ marginBottom: '20px' }}>
           <input
             type="text"
-            placeholder="Search users..."
+            placeholder="Rechercher des utilisateurs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ padding: '10px', width: '300px', fontSize: '14px' }}
+            className="search-input"
           />
         </div>
 
@@ -106,29 +107,29 @@ const UserManagement = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>Nom</th>
               <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Created</th>
+              <th>Nom d'utilisateur</th>
+              <th>Rôle</th>
+              <th>Statut</th>
+              <th>Créé le</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredUsers.map(user => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
+              <tr key={user._id}>
+                <td>{user._id.slice(-6)}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.username}</td>
                 <td>{user.role}</td>
                 <td>
                   <span 
+                    className={`status-badge ${user.status === 'actif' ? 'status-active' : 'status-inactive'}`}
                     style={{ 
-                      padding: '4px 8px', 
-                      borderRadius: '4px', 
-                      backgroundColor: user.status === 'active' ? '#28a745' : '#dc3545',
-                      color: 'white',
-                      fontSize: '12px'
+                      backgroundColor: user.status === 'actif' ? '#28a745' : '#dc3545',
+                      color: 'white'
                     }}
                   >
                     {user.status}
@@ -136,20 +137,20 @@ const UserManagement = () => {
                 </td>
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td>
-                  <button 
-                    onClick={() => handleEditUser(user)}
-                    className="btn btn-primary"
-                    style={{ marginRight: '10px', padding: '5px 10px' }}
-                  >
-                    Edit
-                  </button>
-                  <button 
-                    onClick={() => handleDeleteUser(user.id)}
-                    className="btn btn-danger"
-                    style={{ padding: '5px 10px' }}
-                  >
-                    Delete
-                  </button>
+                  <div className="action-buttons">
+                    <button 
+                      onClick={() => handleEditUser(user)}
+                      className="btn btn-primary"
+                    >
+                      Modifier
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteUser(user._id)}
+                      className="btn btn-danger"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -158,7 +159,7 @@ const UserManagement = () => {
 
         {filteredUsers.length === 0 && (
           <div style={{ textAlign: 'center', padding: '20px', color: '#666' }}>
-            No users found.
+            Aucun utilisateur trouvé.
           </div>
         )}
       </div>

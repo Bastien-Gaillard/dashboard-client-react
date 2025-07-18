@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "md8n6yog74bhzopzc8",
+    "name": "Administrateur",
+    "email": "admin@admin.com",
+    "username": "admin",
+    "password": "$2a$10$vyn1aSolZsf/VI9Q8ox4deHkBqgAVBAFpIECCJ2HQVdbDZ1ZFNJce",
+    "role": "admin",
+    "status": "actif",
+    "createdAt": "2025-07-18T09:54:26.073Z"
+  },
+  {
+    "_id": "md8n6ysajt71qd534pc",
+    "name": "Jean Dupont",
+    "email": "jean@exemple.com",
+    "username": "jean.dupont",
+    "password": "$2a$10$MnuLCG7vXUoNf3GLw.q5vumAhv9/ezQak8NnWDHFv9CyL2tsHqW7.",
+    "role": "utilisateur",
+    "status": "actif",
+    "createdAt": "2025-07-18T09:54:26.192Z"
+  },
+  {
+    "_id": "md8n6yvkov3b6xrrz9",
+    "name": "Marie Martin",
+    "email": "marie@exemple.com",
+    "username": "marie.martin",
+    "password": "$2a$10$SLWLXutKgmMJONopoQWSW.rcqZ7txs/iDvRZk7A2wXx2pPDlxqT8e",
+    "role": "modérateur",
+    "status": "actif",
+    "createdAt": "2025-07-18T09:54:26.302Z"
+  },
+  {
+    "_id": "md8ncapxwbc2umnijg",
+    "name": "Bastien",
+    "email": "test@gmail.com",
+    "username": "admin2",
+    "password": "$2a$10$XB0wcJOaDKn6himsRwYd/OaluXZ6OGesJvnr7qpAw2FhNjO5LChh2",
+    "role": "modérateur",
+    "status": "actif",
+    "createdAt": "2025-07-18T09:58:34.964Z"
+  }
+]

@@ -12,17 +12,17 @@ const Navbar = ({ onLogout }) => {
     <nav className="navbar">
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link to="/dashboard" className="navbar-brand">
-          Admin Dashboard
+          Tableau de Bord Admin
         </Link>
         <ul className="navbar-nav">
           <li>
             <Link to="/dashboard" className={isActive('/dashboard')}>
-              Dashboard
+              Tableau de Bord
             </Link>
           </li>
           <li>
             <Link to="/users" className={isActive('/users')}>
-              Users
+              Utilisateurs
             </Link>
           </li>
           <li>
@@ -31,7 +31,7 @@ const Navbar = ({ onLogout }) => {
               className="nav-link"
               style={{ background: 'none', border: 'none', cursor: 'pointer' }}
             >
-              Logout
+              Déconnexion
             </button>
           </li>
         </ul>

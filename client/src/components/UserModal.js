@@ -5,8 +5,10 @@ const UserModal = ({ user, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    role: 'user',
-    status: 'active'
+    username: '',
+    role: 'utilisateur',
+    status: 'actif',
+    password: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -16,8 +18,10 @@ const UserModal = ({ user, onClose, onSave }) => {
       setFormData({
         name: user.name || '',
         email: user.email || '',
-        role: user.role || 'user',
-        status: user.status || 'active'
+        username: user.username || '',
+        role: user.role || 'utilisateur',
+        status: user.status || 'actif',
+        password: ''
       });
     }
   }, [user]);
@@ -43,7 +47,7 @@ const UserModal = ({ user, onClose, onSave }) => {
       let response;
       if (user) {
         // Update existing user
-        response = await axios.put(`/api/users/${user.id}`, formData, config);
+        response = await axios.put(`/api/users/${user._id}`, formData, config);
       } else {
         // Create new user
         response = await axios.post('/api/users', formData, config);
@@ -51,7 +55,7 @@ const UserModal = ({ user, onClose, onSave }) => {
 
       onSave(response.data);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error saving user');
+      setError(err.response?.data?.message || 'Erreur lors de l\'enregistrement de l\'utilisateur');
     } finally {
       setLoading(false);
     }
@@ -61,13 +65,13 @@ const UserModal = ({ user, onClose, onSave }) => {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h3>{user ? 'Edit User' : 'Add New User'}</h3>
+          <h3>{user ? 'Modifier l\'Utilisateur' : 'Ajouter un Nouvel Utilisateur'}</h3>
           <button onClick={onClose} className="close-btn">×</button>
         </div>
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Nom</label>
             <input
               type="text"
               id="name"
@@ -91,7 +95,34 @@ const UserModal = ({ user, onClose, onSave }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="role">Role</label>
+            <label htmlFor="username">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {!user && (
+            <div className="form-group">
+              <label htmlFor="password">Mot de passe</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required={!user}
+                placeholder="Mot de passe (minimum 6 caractères)"
+              />
+            </div>
+          )}
+
+          <div className="form-group">
+            <label htmlFor="role">Rôle</label>
             <select
               id="role"
               name="role"
@@ -99,14 +130,14 @@ const UserModal = ({ user, onClose, onSave }) => {
               onChange={handleChange}
               style={{ width: '100%', padding: '8px', fontSize: '14px' }}
             >
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-              <option value="moderator">Moderator</option>
+              <option value="utilisateur">Utilisateur</option>
+              <option value="admin">Administrateur</option>
+              <option value="modérateur">Modérateur</option>
             </select>
           </div>
 
           <div className="form-group">
-            <label htmlFor="status">Status</label>
+            <label htmlFor="status">Statut</label>
             <select
               id="status"
               name="status"
@@ -114,8 +145,8 @@ const UserModal = ({ user, onClose, onSave }) => {
               onChange={handleChange}
               style={{ width: '100%', padding: '8px', fontSize: '14px' }}
             >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="actif">Actif</option>
+              <option value="inactif">Inactif</option>
             </select>
           </div>
 
@@ -128,14 +159,14 @@ const UserModal = ({ user, onClose, onSave }) => {
               className="btn"
               style={{ backgroundColor: '#6c757d', color: 'white' }}
             >
-              Cancel
+              Annuler
             </button>
             <button 
               type="submit" 
               className="btn btn-primary"
               disabled={loading}
             >
-              {loading ? 'Saving...' : (user ? 'Update' : 'Create')}
+              {loading ? 'Enregistrement...' : (user ? 'Mettre à jour' : 'Créer')}
             </button>
           </div>
         </form>
