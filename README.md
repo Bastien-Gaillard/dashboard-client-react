@@ -1,17 +1,16 @@
 
-## 📋 Vue d'ensemble
+## Vue d'ensemble
 
-Ce projet est une **démonstration complète de mes compétences en développement full-stack**. Il présente un tableau de bord administratif moderne avec authentification, gestion d'utilisateurs, visualisation de données et une architecture robuste.
+Ce projet est une démonstration complète de mes compétences en développement full-stack. Il présente un tableau de bord administratif moderne avec authentification, gestion d'utilisateurs, visualisation de données et une architecture robuste.
 
-## ⭐ Fonctionnalités Principales
+## Fonctionnalités Principales
 
-### 🔐 **Authentification & Sécurité**
+### **Authentification & Sécurité**
 - Système de connexion avec JWT (JSON Web Tokens)
 - Hashage sécurisé des mots de passe avec bcrypt
 - Middleware de protection des routes API
-- Icône d'affichage/masquage du mot de passe
 
-### 👥 **Gestion Complète des Utilisateurs**
+### **Gestion Complète des Utilisateurs**
 - **CRUD complet** : Créer, Lire, Modifier, Supprimer
 - Interface de gestion intuitive avec modal
 - Recherche en temps réel (nom, email, nom d'utilisateur)
@@ -19,7 +18,7 @@ Ce projet est une **démonstration complète de mes compétences en développeme
 - Gestion des rôles (Admin, Utilisateur, Modérateur)
 - Statut des utilisateurs (Actif/Inactif)
 
-### 📊 **Tableau de Bord & Visualisations**
+### **Tableau de Bord & Visualisations**
 - Statistiques en temps réel
 - Graphiques interactifs avec Recharts :
   - Graphique linéaire de croissance
@@ -27,13 +26,13 @@ Ce projet est une **démonstration complète de mes compétences en développeme
   - Graphique en barres du chiffre d'affaires
 - Interface responsive et moderne
 
-### 🗄️ **Base de Données Persistante**
+### **Base de Données Persistante**
 - Système de stockage JSON sur disque
 - Données conservées entre les redémarrages
 - IDs uniques générés automatiquement
 - Sauvegarde automatique des modifications
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 ### **Frontend**
 - **React 18.2.0** - Framework JavaScript moderne
@@ -50,7 +49,7 @@ Ce projet est une **démonstration complète de mes compétences en développeme
 - **CORS** - Gestion des requêtes cross-origin
 - **Base de données JSON** - Stockage persistant simple
 
-## 📁 Structure du Projet
+## Structure du Projet
 
 ```
 admin/
@@ -78,7 +77,7 @@ admin/
 └── README.md                   # Documentation (ce fichier)
 ```
 
-## 🚀 Installation et Démarrage
+## Installation et Démarrage
 
 ### **Prérequis**
 - Node.js (version 14 ou supérieure)
@@ -118,7 +117,7 @@ npm start
 ```
 L'application s'ouvre sur `http://localhost:3000`
 
-## 🔑 Identifiants de Démonstration
+## Identifiants de Démonstration
 
 ### **Administrateur**
 - **Nom d'utilisateur :** `admin`
@@ -128,12 +127,12 @@ L'application s'ouvre sur `http://localhost:3000`
 - **jean.dupont** / password123
 - **marie.martin** / password123
 
-## 📱 Utilisation
+## Utilisation
 
 ### **1. Connexion**
 - Accédez à `http://localhost:3000`
 - Utilisez les identifiants administrateur
-- L'icône 👁️ permet d'afficher/masquer le mot de passe
+- L'icône permet d'afficher/masquer le mot de passe
 
 ### **2. Tableau de Bord**
 - Consultez les statistiques en temps réel
@@ -147,7 +146,7 @@ L'application s'ouvre sur `http://localhost:3000`
 - **Modifier** : Cliquez sur "Modifier" dans les actions
 - **Supprimer** : Cliquez sur "Supprimer" (avec confirmation)
 
-## 🎯 Fonctionnalités Techniques Mises en Avant
+## Fonctionnalités Techniques Mises en Avant
 
 ### **Architecture Full-Stack**
 - Séparation claire frontend/backend
@@ -172,7 +171,7 @@ L'application s'ouvre sur `http://localhost:3000`
 - Gestion des erreurs
 - API endpoints documentés
 
-## 🌟 Points Forts de l'Implémentation
+## Points Forts de l'Implémentation
 
 ### **Code Propre**
 - Composants React modulaires
@@ -192,7 +191,7 @@ L'application s'ouvre sur `http://localhost:3000`
 - Logs détaillés
 - Documentation complète
 
-## 🔧 Configuration
+## Configuration
 
 ### **Variables d'Environnement (.env)**
 ```env
@@ -216,7 +215,7 @@ Les données sont stockées dans `server/data/users.json` avec la structure :
 }
 ```
 
-## 📈 Améliorations Possibles
+## Améliorations Possibles
 
 ### **À Court Terme**
 - [ ] Pagination pour la liste des utilisateurs
@@ -236,27 +235,23 @@ Les données sont stockées dans `server/data/users.json` avec la structure :
 - [ ] Intégration avec des services externes
 - [ ] Version mobile native
 
-## 👨‍💻 Développé par
+## Développé par
 
-**[Votre Nom]**
-- 💼 Développeur Full-Stack
-- 🎯 Spécialisé en React, Node.js, et solutions web modernes
-- 📧 Contact : [votre-email@exemple.com]
+**GAILLARD Bastien**
+- Contact : [gaillardbastienjf@gmail.com]
 
 ---
 
-## 📝 Notes pour les Clients
+## Notes pour les Clients
 
 Ce projet démontre :
 - ✅ **Maîtrise technique complète** du développement web moderne
 - ✅ **Capacité à créer des interfaces utilisateur** intuitives et esthétiques
 - ✅ **Expertise en architecture backend** robuste et sécurisée
-- ✅ **Attention aux détails** et à l'expérience utilisateur
-- ✅ **Code professionnel** bien structuré et maintenable
 
 *Cette démonstration peut être adaptée à vos besoins spécifiques et étendue avec des fonctionnalités sur mesure.*
 
-## 🚀 API Endpoints
+## API Endpoints
 
 ### **Authentification**
 - `POST /api/auth/login` - Connexion utilisateur
@@ -275,7 +270,7 @@ Ce projet démontre :
 ### **Santé du Serveur**
 - `GET /api/health` - État du serveur
 
-## 🔍 Exemples de Requêtes
+## Exemples de Requêtes
 
 ### **Connexion**
 ```javascript
@@ -299,13 +294,13 @@ POST /api/users
 }
 ```
 
-## 📞 Support et Contact
+## Support et Contact
 
 Pour toute question concernant ce projet de démonstration ou pour discuter de vos besoins spécifiques :
 
-- 📧 **Email** : [votre-email@exemple.com]
-- 💼 **LinkedIn** : [Votre profil LinkedIn]
-- 🌐 **Portfolio** : [Votre site web]
+- **Email** : [gaillardbastienjf@gmail.com]
+- **LinkedIn** : [profil LinkedIn]
+- **Portfolio** : [site web]
 
 ---
 
